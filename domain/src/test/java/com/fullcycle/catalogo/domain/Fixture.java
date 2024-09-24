@@ -1,5 +1,9 @@
 package com.fullcycle.catalogo.domain;
 
+import com.fullcycle.catalogo.domain.category.Category;
+import com.fullcycle.catalogo.domain.utils.IdUtils;
+import com.fullcycle.catalogo.domain.utils.InstantUtils;
+
 import net.datafaker.Faker;
 
 public final class Fixture {
@@ -26,11 +30,24 @@ public final class Fixture {
         return FAKER.options().option(
                 "System Design no Mercado Livre na prática",
                 "Não cometa esses erros ao trabalhar com Microsserviços",
-                "Testes de Mutação. Você não testa seu software corretamente"
-        );
+                "Testes de Mutação. Você não testa seu software corretamente");
     }
 
     public static String checksum() {
         return "03fe62de";
     }
+
+    public static final class Categories {
+
+        public static Category aulas() {
+            return Category.with(IdUtils.uuid(), "Aulas", "Conteudo gravado", true, InstantUtils.now(),
+                    InstantUtils.now(), null);
+        }
+
+        public static Category lives() {
+            return Category.with(IdUtils.uuid(), "Lives", "Conteudo ao vivo", true, InstantUtils.now(),
+                    InstantUtils.now(), null);
+        }
+    }
+
 }
